@@ -1,0 +1,681 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    text-decoration: none;
+}
+body{
+    font-family:Verdana, "Lantinghei SC", "Hiragino Sans GB", "Microsoft Yahei", Helvetica, arial, "\5b8b\4f53", sans-serif;
+    font-size: 16px;
+    color: #333;
+    font-weight: 400;
+}
+ul li{
+    list-style: none;
+}
+h1,h2,h3,h4{
+    font-weight: 400
+}
+.header{
+    background-color: #fff;
+    height: 70px;
+    line-height: 70px;
+}
+.header-container{
+    margin: 0 auto;
+    width: 1000px;
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+.jiker-logo{
+    display: inline-block;
+    width: 100px;
+    height: 37px;
+}
+img{
+    display: inline-block;
+    vertical-align: top;
+    max-width: 100%;
+}
+.header-nav{
+   width: 490px; 
+}
+.header-nav ul{
+    display: flex;
+    vertical-align: middle; 
+}
+.header-nav li:hover .slide-icon{
+transform: rotate(180deg);
+}
+.header-nav .slide-icon{
+    display: inline-block;
+    width: 11px;
+    height: 7px;
+    margin-left: 5px;
+    background: url(https://e.jikexueyuan.com/headerandfooter/images/icon.png)no-repeat;
+    background-position: 0px -47px;
+    transition: all 0.2s ease-in-out;
+}
+.slide-submenu{
+    position: absolute;
+    display: none;
+}
+.header-container li{
+    position: relative;
+    flex: 1;
+    font-size: 15px;
+    line-height: 37px;
+}
+.header-container li a{
+    color: #555;
+
+}
+.search{
+    position: relative;
+    font-size: 0;
+    border: 1px solid #e4e4e4;
+    height: 32px;
+    width: 230px;
+}
+.search input{
+    float: left;
+    width: 190px;
+    height: 100%;
+    outline: none;
+    border: none;
+    border-right: 1px solid #e4e4e4;
+    padding: 1px 8px;  
+    font-size: 12px;
+}
+.search input::placeholder{
+    color: #bdbbbb;
+}
+.search-icon{
+    display: block;
+    float: right;
+    width: 18px;
+    height: 18px;
+    margin: 6px 10px 0 0;
+    background: url(https://e.jikexueyuan.com/headerandfooter/images/icon.png) 0 0 no-repeat;
+}
+.userinfo-notlogin{
+    position: relative;
+    font-size: 14px;
+
+}
+.userinfo-notlogin a{
+    display: inline-block;
+    font-size: 14px;
+    padding: 0px 15px;
+    color: #555;
+}
+.userinfo-notlogin i{
+    position: absolute;
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 1px solid #ccc;
+}
+.header a:hover{
+    color: #35b558;
+}
+.banner-container{
+    min-width: 1000px;
+    height: 426px;
+    text-align: center;
+    padding-top: 150px;
+    background: url(images/banner.jpg)no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+}
+.banner-container h1{
+    font-size: 40px;
+}
+.nav-container{
+    width: 100%;
+    min-width: 1000px;
+    height: 70px;
+}
+.nav-container.fixed-top #nav-list{ 
+    width: 100%;
+    min-width: 1000px;
+    position: fixed;
+    top: 0;
+
+}
+#nav-list{
+    z-index: 999;
+    background: rgba(21, 49, 136, 0.95);
+    padding:  0 calc(50% - 480px);
+    display: flex;
+    color: #fff;
+    text-align: center;
+}
+.nav-item{
+    line-height: 70px;
+    flex-grow: 1;
+    cursor: pointer;
+}
+.nav-item:hover,.nav-item.active{
+    background: rgba(45, 70, 148, 0.95);
+}
+.section-width{
+    width: 960px;
+    margin: 0 auto;
+}
+.subtitle{
+    font-size: 20px;
+    color: #153188;
+    font-weight: 500;
+    height: 50px;
+    width: 140px;
+    text-align: center;
+    text-indent: -15px;
+    margin-bottom: 30px;
+}
+.introduce{
+    padding-top: 60px;
+    height: 300px;
+}
+.introduce .subtitle{
+    background: url(images/sub-title-intro.png) no-repeat 0 bottom;  
+}
+.introduce p{
+    font-size: 14px;
+    line-height: 30px;
+    text-align: justify;
+}
+.watch {
+    overflow: hidden;
+}
+.watch .subtitle{
+    background: url(images/sub-title-course.jpg) no-repeat 0 bottom;
+}
+.videoContainer{
+    position: relative;
+}
+.video-js{
+    position: relative;
+    width: 960px;
+    height: 540px;
+    z-index: 3;
+}
+
+.vjs-tech{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+.mask{
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: inline-block;
+    background: #e9f1fa;
+    top: 50%;
+    left: 50%;
+    margin: -20px 0 0 -40px;
+    cursor: pointer;
+    box-shadow: 0px 5px 10px #1b6cc2;
+    transition-property:box-shadow, background;
+    transition-duration:  0.8s;
+    z-index: 4;
+}
+.mask::before{
+    position: absolute;
+    display: inline-block;
+    content: '';
+    width: 0;
+    height: 0;
+    border-top:14px solid transparent ;
+    border-bottom:14px solid transparent ;
+    border-left:22px solid #1965c5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-6px,-14px);
+
+}
+.mask:hover{
+    background: #fff;
+    box-shadow: 0px 5px 10px #062ea7;
+} 
+.blackboard{
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background:rgba(0, 0, 0, 0.2);
+    z-index: 3;
+    top: 0;
+    left: 0;
+}
+.videoContainer:hover .blackboard{
+    background:rgba(0, 0, 0, 0.1);
+}
+.video-desc{
+    height: 90px;
+    padding-top: 25px;
+}
+.video-desc h3{
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+.video-desc p{
+    font-size: 12px;
+    color: #999;
+}
+.video-desc p span{
+    margin-right: 15px;
+}
+.lesson-list{
+    width: 700px;
+    float: left;
+    
+}
+.lesson-list dt{
+    height: 40px;
+    line-height: 40px;
+    background: #f7f7f7;
+    font-size: 14px;
+    padding-left: 50px;
+    position: relative;
+    border-top: 1px solid #e4e4e4;
+    cursor: pointer;
+}
+.lesson-list dt i{
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    margin-top: -4px;
+    left: 18px;
+    height: 8px;
+    width: 14px;
+    cursor: pointer;
+    background: url(images/arrow-icon.png) no-repeat;
+    transition: all 0.5s;
+}
+.lesson-list dt a{
+    position: absolute;
+    width: 16px;
+    height: 15px;
+    top: 12px;
+    right: 20px;
+    background: url(images/download-icon.png) no-repeat;
+}
+.lesson-list .close{
+    transform: rotate(-90deg);
+}
+.lesson-list dd.hide{
+    display: none;
+}
+.lesson-list dd{
+    position:relative;
+    height: 40px;
+    font-size: 12px;
+    background: #fff;
+    line-height: 40px;
+    color: #999;
+    padding-left: 50px;
+    border-bottom: 1px solid #f5f5f5;
+    cursor: pointer;
+}
+.lesson-list .active,.lesson-list dd:hover{
+    color: #009df7;
+}
+.lesson-list dd span{
+    position: absolute;
+    right: 20px;
+}
+.right-container{
+    float: right;
+    width: 240px;
+    padding: 0 10px;
+}
+.lesson-info{
+    display: block;
+    border-bottom: 1px solid #f5f5f5;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+.right-container  h4{
+    font-weight: 500;
+    line-height: 1em;
+    margin-bottom: 20px;
+    
+}
+.right-container .lesson-info dl{
+    font-size: 12px;
+    width: 100%;
+    clear: both;
+    overflow: hidden;
+    
+}
+.right-container .lesson-info dt{
+    width: 60px;
+    color: #999;
+    margin: 8px 0;
+}
+.right-container .lesson-info dd{
+    margin: 8px 0 ;
+}
+.right-container .lesson-info .f_l{
+    float: left;
+}
+.lesson-tip a{
+    display: inline-block;
+    background-color: #f7f7f7;
+    border-radius: 3px;
+    padding: 2px 5px;
+    margin: 0 1px 5px 0;
+    color: #666;
+}
+.tech-meet ul{
+    font-size: 12px;
+}
+.tech-meet li{
+    margin-bottom: 15px;
+    
+}
+.tech-meet .weibo{
+    overflow: hidden;
+    line-height: 44px;
+}
+.weibo img,.qq img{
+    width: 40px;
+    float: left;
+    margin-right: 10px;
+}
+.tech-meet .qq{
+    position: relative;
+}
+.tech-meet .qq p{
+    display: inline-block;
+    margin-bottom: 4px;
+}
+.tech-meet a{
+    color: #666;
+
+}
+.qq a{
+    color: #fff;
+    display: inline-block;
+    background-color: #00a8ff;
+    padding: 4px 12px;
+    border-radius: 2px;
+}
+.qq .img-qrCode{
+    position: absolute;
+    display: none;
+    width: 90px;
+    height: 120px;
+    top: 50px;
+    left: 40px;
+}
+.tech-meet .qq .btn-qrCode:hover + .img-qrCode {
+    display: block;
+  }
+.qq a:hover {
+    background-color: #00b1ff;
+}
+.teacher{
+    margin-top: 60px;
+}
+.teacher .subtitle{
+    background:url(images/sub-title-teacher.jpg) no-repeat 0 0 ;
+}
+.teacher-list{
+    position: relative;
+    text-align: center;
+    height: 210px;
+    overflow: hidden;
+}
+.teacher-list ul{
+    position: absolute;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.teacher-item{
+    display: inline-block;
+    width: 240px;
+    text-align: center;
+} 
+.teacher-item h3{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+    margin-top: 12px;
+    margin-bottom: 7px;
+} 
+.teacher-item .career{
+    height: 36px;
+    color: #999;
+}
+
+.teacher-item p{
+    font-size: 12px;
+    line-height: 18px;
+    margin:0 20px;
+}
+.teacher-item .intro{
+    margin-top: 9px;
+    padding-left: 6px;
+    text-align: left;
+}
+.arrow-prev,.arrow-next{
+    position: absolute;
+    top:50%;
+    width: 25px;
+    height: 40px;
+    margin-top: -20px;
+    transition: all .3s;
+    background-color: rgba(226, 230, 234, 0.8);
+}
+.arrow{
+    position: relative;
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin: 14px 0 0 9px;
+    transform: rotate(-135deg);
+    transform-origin: 0,0;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+}
+[class*='arrow-']:hover{
+    background: rgba(177, 189, 198, 0.8);
+}
+.arrow.turn{
+    margin: 14px  0 0 4px;
+    transform:rotate(45deg);
+}
+.arrow-prev{
+    left: 0;
+}
+.arrow-next{
+    right: 0;
+}
+.DB{
+    padding-top: 50px;
+}
+.DB .media{
+    padding: 30px 0;
+}
+.DB .media img{
+    width: 300px;
+    height: 210px;
+    margin-right: 20px;
+    float: left;
+}
+.DB h4{
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 5px;
+}
+.DB .media .desc{
+    font-size: 13px;
+    color: #666;
+    line-height: 1.8em;
+}
+.DB .box-btn{
+    display: block;
+    padding: 20px 0;
+}
+.DB .box-btn a{
+    display: inline-block;
+    width: 130px;
+    height: 40px;
+    text-align: center;
+    line-height: 38px;
+    border: 1px solid #00a8ff;
+    font-size: 15px;
+    margin-right: 15px;
+    border-radius: 2px;
+    background: #00a8ff;
+    color: #fff;
+}
+.box-tip span{
+    font-size: 15px;
+    color: #666;
+    margin-right: 10px;
+}
+.DB .box-tip a{
+    display: inline-block;
+    padding: 5px 18px;
+    font-size: 12px;
+    color: #1c7c89;
+    background: #caeaef;
+    border-radius: 15px;
+}
+.user-guide{
+    padding: 30px 0;
+    border-top: 1px solid #fefefe;
+    border-bottom: 1px solid #fefefe;
+    font-size: 0;
+}
+.user-guide li{
+    display: inline-block;
+    width: 300px;
+    height: 120px;
+    text-align: center;
+    vertical-align: top;
+}
+.user-guide li a{
+    display: table-cell;
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.6em;
+    width: 300px;
+    height: 120px;
+    vertical-align: middle;
+}
+.user-guide .red{
+    background: url(images/bg_red.jpg) no-repeat 0 0;
+}
+.user-guide .ora{
+    margin: 0 30px;
+    background: url(images/bg_ora.jpg) no-repeat 0 0;
+}
+.user-guide .blue{
+    background: url(images/bg_blue.jpg) no-repeat 0 0;
+}
+.about{
+    margin-top: 60px;
+    height: 430px;
+}
+.about .subtitle{
+    background: url(images/about_title.jpg) no-repeat 0 0;
+    width: 960px;
+    margin-bottom: 50px;
+}
+.about-container{
+    display: flex;
+}
+.about-item{
+    text-align: center;
+    flex:1;
+}
+.about-item h3{
+    font-size: 14px;
+    margin-top: 20px;
+    color: #333;
+}
+.about-item p{
+    font-size: 12px;
+    margin-top: 14px;
+    color: #999;
+}
+.about-item span a{
+    font-size: 14px;
+    line-height: 32px;
+    display: inline-block;
+    width: 90px;
+    height: 30px;
+    margin-top: 15px;
+    color: #fff;
+    background: #00a8ff;
+    border-radius: 2px;
+}
+footer{
+    min-width: 1000px;
+    margin-top: 70px;
+    position: relative;
+    font-size: 12px;
+    background: #fff;
+    padding-bottom: 30px;
+    border-top: 1px solid #e4e4e4;
+    text-align: center;
+}
+.contact-way{
+    margin: 20px auto 30px;
+    background: #fff;
+    width: 240px;
+}
+.contact-way a{
+    display: inline-block;
+    width: 22px;
+    height: 18px;
+    margin-right: 20px;
+    background: url(https://e.jikexueyuan.com/headerandfooter/images/otherway.png) no-repeat;
+}
+.contact-way .weixin-icon{
+    background-position: -28px 0;
+}
+.contact-way .facebook-icon{
+    background-position: -102px 0;
+}
+.contact-way .google-icon{
+    background-position: -80px 0;
+}
+.copyright,.copyright a{
+    color: #999;
+}
+.gotop{
+    position: fixed;
+    width: 40px;
+    top: 450px;
+    right: 3%;
+}
+.gotop span{
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1px;
+}
+.gotop .tel-icon{
+    background: #fff url(https://e.jikexueyuan.com/headerandfooter/images/tel.png) 12px 10px no-repeat;
+}
+.gotop .wx-icon{
+    background:#fff url(https://e.jikexueyuan.com/headerandfooter/images/wx.png) 12px 10px no-repeat ;
+}
+.gotop .top-icon{
+    /* display: none; */
+    background:#fff url(https://e.jikexueyuan.com/headerandfooter/images/top.png) 11px 10px no-repeat
+}

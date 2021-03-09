@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigator</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .body{
+            color: #666;
+        }
+        .h400,.h800{
+            border: 1px solid #e4e4e4;
+            padding: 20px;
+        }
+        .h400{
+            height: 400px;
+        }
+        .h800{
+            height: 800px;
+        }
+        .navigator-bar{
+            height: 60px;
+        }
+        .navigator-bar ul{ 
+            display: flex;
+            background: #f5f5f5;
+            list-style: none;
+        }
+        .navigator-bar.fixed-top ul{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        .navigator-bar-item{
+            flex: 1;
+            line-height: 60px;
+            text-align: center;
+            cursor: pointer;
+            transition: all .2s ease;
+        }
+        .navigator-bar-item:hover{
+            background: #666;
+            color: #fff;
+        }
+        .navigator-bar-item.active{
+            background: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="section-banner h400">section Banner</div>
+    <div class="navigator-bar" id="navigator-bar">
+        <ul>
+            <li class="navigator-bar-item" data-nav="section-1">SECTION 1</li>
+            <li class="navigator-bar-item" data-nav="section-2">SECTION 2</li>
+            <li class="navigator-bar-item" data-nav="section-3">SECTION 3</li>
+            <li class="navigator-bar-item" data-nav="section-4">SECTION 4</li>
+            <li class="navigator-bar-item" data-nav="section-5">SECTION 5</li>
+        </ul>
+    </div>
+    <div class="h400" id="section-1">SECTION 1</div>
+    <div class="h400" id="section-2">SECTION 2</div>
+    <div class="h400" id="section-3">SECTION 3</div>
+    <div class="h400" id="section-4">SECTION 4</div>
+    <div class="h400" id="section-5">SECTION 5</div>
+    <div class="h800">SECTION Footer</div>
+    <script>
+        const PAGE = {
+            data: {
+                navigatorBarIdArr: ['section-1','section-2','section-3','section-4','section-5'],
+                navigatorBarActived: '',//当前导航高亮的ID 
+                navigatorBarFixed: false,
+                navigatorBarFixedOffset: 400,//导航距离顶部的高度
+                navigatorBarHeight: 60,
+            },
+            init: function() {
+                this.bind();
+            },
+            bind: function() {
+                let navigator =document.getElementById('navigator-bar')
+                window.addEventListener('scroll', this.refreshNavigator); 
+                this.onEventListener(navigator, 'click', 'navigator-bar-item',this.goNavigator);
+            },
+            onEventListener:function(parentNode, action, childClassName, callback){
+                parentNode.addEventListener(action,function(e){
+                    e.target.className.indexOf(childClassName) > -1 && callback(e);
+                })
+            },
+            refreshNavigator: function() {
+                PAGE.fixedNavigator();
+                PAGE.heightLightNavigator();
+            },
+            fixedNavigator: function() {
+                let scrollTop = document.documentElement.scrollTop;//获取当前浏览器滚动的距离
+                let navigatorBarTop = PAGE.data.navigatorBarFixedOffset;
+                let navigatorBarFixed = scrollTop >=navigatorBarTop;
+                if(PAGE.data.navigatorBarFixed !== navigatorBarFixed){
+                    PAGE.data.navigatorBarFixed = navigatorBarFixed;
+                    let navigatorBar = document.getElementById('navigator-bar');
+                    if(navigatorBarFixed){
+                        navigatorBar.className = 'navigator-bar fixed-top'; 
+                    }else{
+                        navigatorBar.className = 'navigator-bar';
+                    }
+                }
+
+            },
+            heightLightNavigator: function() {
+                let scrollTop = document.documentElement.scrollTop;
+                let filterNav = PAGE.data.navigatorBarIdArr.filter( data => {
+                    let offsetTop = document.getElementById(data).offsetTop;
+                    return scrollTop >= offsetTop - PAGE.data.navigatorBarHeight; 
+                
+                })
+                let navigatorBarActived = filterNav.length ? filterNav[filterNav.length - 1] : '';
+                if(PAGE.data.navigatorBarActived !== navigatorBarActived){
+                    PAGE.navigatorBarActived = navigatorBarActived;
+                    let navigatorBarItems = document.getElementsByClassName('navigator-bar-item');
+                    for(let i=0;i < navigatorBarItems.length; i++){
+                        let navigatorBarItem = navigatorBarItems[i];
+                        let navigatorBarId = navigatorBarItem.getAttribute('data-nav');
+                        if(navigatorBarId === PAGE.navigatorBarActived){
+                            navigatorBarItem.className +=' active' 
+                        }else{
+                            navigatorBarItem.className = 'navigator-bar-item';
+                        }
+                    }
+                }
+            },
+            goNavigator: function(e) {
+                let navigatorItemId = e.target.dataset.nav;
+                let offsetTop = document.getElementById(navigatorItemId).offsetTop - PAGE.data.navigatorBarHeight;
+                document.documentElement.scrollTop = offsetTop;
+            }
+        }
+        PAGE.init();
+    </script>
+</body>
+</html>
